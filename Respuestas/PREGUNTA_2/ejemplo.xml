@@ -2,17 +2,17 @@
 <animales>
 	<mamiferos>
 		<id>A01</id>
-		<nombre>El Panda</nombre>
+		<nombre>El Oso</nombre>
 		<comida>Bambu</comida>
 	</mamiferos>
 	<mamiferos>
 		<id>A02</id>
-		<nombre>El Tigre</nombre>
+		<nombre>El Guacamayo</nombre>
 		<comida>Carne</comida>
 	</mamiferos>
 	<reptiles>
 		<id>A03</id>
-		<nombre>La Tortuga</nombre>
+		<nombre>El Dinosaurio</nombre>
 		<comida>Algas Marinaas</comida>
 	</reptiles>
 	<aves>
