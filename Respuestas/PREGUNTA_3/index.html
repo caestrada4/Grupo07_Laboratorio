@@ -50,7 +50,7 @@ function change_myselect(sel) {
       document.getElementById("demo").innerHTML = txt;
     }
   };
-  xmlhttp.open("POST", "./ListaPeliculas.json", true);	
+  xmlhttp.open("GET", "./ListaPeliculas.json", true);	
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send("x=" + dbParam);
 }
