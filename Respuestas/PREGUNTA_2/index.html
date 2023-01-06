@@ -29,6 +29,18 @@
           xhttp.send();<br>
         </li>
       </ul>
+      <script>
+        function CargarDatos() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("demo").innerHTML = this.responseText;
+            }
+          };
+          xhttp.open("GET", "ejemplo.xml", true);
+          xhttp.send();
+        }        
+      </script>
       <div class="section" id="enunciado" style="padding-left:25%;margin-top: 5%;" >
       <button style="align-self: center;" type="button" onclick="CargarDatos()">Obtener Datos</button>
       </div>
