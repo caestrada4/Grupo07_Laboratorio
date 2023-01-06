@@ -15,44 +15,57 @@
     rel="stylesheet">
 
 </head>
+<button onclick="ejecutarAjax()">Mostrar Informacion</button>
+<br></br>
+<div id="info"></div>
+<script type="text/javascript">
+  function ejecutarAjax(){
+    var resultado=document.getElementById("info");
+    var arr=[];
+    var i,j;
+    if(window.XMLHttpRequest){
+      xmlhttp=new XMLHttpRequest();
+    }else{
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function(){
+      if(xmlhttp.readyState===4 && xmlhttp.status===200){
+        if(xmlhttp.responseXML !== null){
+          for(i=0;i<5;i++){
+            for(j=0;j<6;j++){
+              if(j===0){
+                arr[i][j]=xmlhttp.responseXML.getElementsByTagName("NUMERO").item(i);
+              }else if(j===1){
+                arr[i][j]=xmlhttp.responseXML.getElementsByTagName("TITLE").item(i);
+               
+              }else if(j===2){
+                arr[i][j]=xmlhttp.responseXML.getElementsByTagName("DESCRIPCION").item(i);
+               
+              }else if(j===3){
+                arr[i][j]=xmlhttp.responseXML.getElementsByTagName("PRECIOU").item(i);
+               
+              }else if(j===4){
+                arr[i][j]=xmlhttp.responseXML.getElementsByTagName("CANTIDAD").item(i);
+               
+              }else if(j===5){
+                arr[i][j]=xmlhttp.responseXML.getElementsByTagName("PRECIOT").item(i);
+               
+              }
+            }
+          }
+          for(i=0;i<5;i++){
+            <tr> </tr>
+            for(j=0;j<6;j++){
+                <td>resultado.innerHTML=arr[i][j].firstChild.nodeValue;</td>
+            }
+          }
+          xmlhttp.open("GET","ventas.xml",true);
+          xmlhttp.send();
+        }
+      }
+    }
+  }
+</script>
 
-<body>
-
-  <!-- /////////////////////////////////////////////////////////////////////////////////////////////////
-                       START SECTION 5 - SLIDE 
-//////////////////////////////////////////////////////////////////////////////////////////////////////-->
-  <section id="slide" class="services">
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 services mt-4">
-          <div class="services__content">
-            <div class="icon d-block fas fa-cloud-upload-alt"></div>
-            <h3 class="display-3--title mt-1">AJAX</h3>
-            <p class="lh-lg">
-              Mostrar datos XML con AJAX            </p>
-
-              <script type="text/javascript" src="objetoAjax.js"></script>
-              <script type="text/javascript" src="ventas.js"></script>
-              </head>
-              <body>
-              <h1>Datos de documento XML con ajax.</h1>
-              <div id="contenido"></div>
-              </body>           
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-
-
-
-
-
-</body>
 
 </html>
