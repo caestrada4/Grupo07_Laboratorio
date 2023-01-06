@@ -2,32 +2,32 @@
 <animales>
 	<mamiferos>
 		<id>A01</id>
-		<nombre>El Oso</nombre>
-		<comida>Bambu</comida>
+		<nombre>Oso</nombre>
+		<comida>Pescados</comida>
 	</mamiferos>
 	<mamiferos>
 		<id>A02</id>
-		<nombre>El Guacamayo</nombre>
-		<comida>Carne</comida>
+		<nombre>Guacamayo</nombre>
+		<comida>Gusanos</comida>
 	</mamiferos>
 	<reptiles>
 		<id>A03</id>
-		<nombre>El Dinosaurio</nombre>
-		<comida>Algas Marinaas</comida>
+		<nombre>Dinosaurios</nombre>
+		<comida>Plantas</comida>
 	</reptiles>
 	<aves>
 		<id>A04</id>
-		<nombre>El Perico</nombre>
-		<comida>Diente de León</comida>
+		<nombre>Leon</nombre>
+		<comida>Cebras</comida>
 	</aves>
 	<peces>
 		<id>A05</id>
-		<nombre>El Atun</nombre>
-		<comida>Pequeños Crustáceos</comida>
+		<nombre>Jirafas</nombre>
+		<comida>Arboles</comida>
 	</peces>
 	<anfibios>
 		<id>A06</id>
-		<nombre>La Rana</nombre>
-		<comida>Moscas</comida>
+		<nombre>Perro</nombre>
+		<comida>Comida de perro</comida>
 	</anfibios>
 </animales>
