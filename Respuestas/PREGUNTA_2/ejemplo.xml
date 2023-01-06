@@ -28,6 +28,6 @@
 	<anfibios>
 		<id>A06</id>
 		<nombre>Perro</nombre>
-		<comida>Comida de perro</comida>
+		<comida>Croquetas</comida>
 	</anfibios>
 </animales>
