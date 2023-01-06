@@ -31,24 +31,24 @@
 
 <script>
 
-// Desarrolle el script correspondiente
 function change_myselect(sel) {
-  const dbParam = JSON.stringify({table:sel,limit:20});
-  const xmlhttp = new XMLHttpRequest();
-  xmlhttp.onload = function() {
-    const myObj = JSON.parse(this.responseText);
-    let text = "<table border='1'>"
-    for (let x in myObj) {
-      text += "<tr><td>" + myObj[x].name + "</td></tr>";
-    }
-    text += "</table>"
-    document.getElementById("demo").innerHTML = text;
-  }
-  xmlhttp.open("GET", "ListaPeliculas.json", true);
-  xmlhttp.send(); xmlhttp.onload = function() {
-  const myObj = JSON.parse(this.responseText);
-  document.getElementById("demo").innerHTML = myObj.name;
-}
+  var obj, dbParam, xmlhttp, myObj, x, txt = "";
+  obj = { table: sel, limit: 20 };
+  dbParam = JSON.stringify(obj);
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myObj = JSON.parse(this.responseText);
+      txt += "<table border='1'>"
+      for (x in myObj) {
+        txt += "<tr><td>" + x.name + "</td></tr>";
+      }
+      txt += "</table>"    
+      document.getElementById("demo").innerHTML = txt;
+      }
+    };
+  xmlhttp.open("POST", "ListaPeliculas.json", true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send("x=" + dbParam);
 }
 </script>
