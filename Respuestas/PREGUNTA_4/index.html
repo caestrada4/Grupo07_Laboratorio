@@ -18,40 +18,58 @@
     xmlhttp.onreadystatechange=function(){
       if(xmlhttp.readyState===4 && xmlhttp.status===200){
         if(xmlhttp.responseXML !== null){
-          for(i=0;i<5;i++){
-            for(j=0;j<6;j++){
-              if(j===0){
-                arr[i][j]=xmlhttp.responseXML.getElementsByTagName("NUMERO").item(i);
-              }else if(j===1){
-                arr[i][j]=xmlhttp.responseXML.getElementsByTagName("TITLE").item(i);
+   
+                arr[0][0]=xmlhttp.responseXML.getElementsByTagName("NUMERO").item(0);
+                arr[0][1]=xmlhttp.responseXML.getElementsByTagName("TITLE").item(0);
+                arr[0][2]=xmlhttp.responseXML.getElementsByTagName("DESCRIPCION").item(0);
+                arr[0][3]=xmlhttp.responseXML.getElementsByTagName("PRECIOU").item(0);
+                arr[0][4]=xmlhttp.responseXML.getElementsByTagName("CANTIDAD").item(0);
+                arr[0][5]=xmlhttp.responseXML.getElementsByTagName("PRECIOT").item(0);
+
+                arr[1][0]=xmlhttp.responseXML.getElementsByTagName("NUMERO").item(0);
+                arr[1][1]=xmlhttp.responseXML.getElementsByTagName("TITLE").item(0);
+                arr[1][2]=xmlhttp.responseXML.getElementsByTagName("DESCRIPCION").item(0);
+                arr[1][3]=xmlhttp.responseXML.getElementsByTagName("PRECIOU").item(0);
+                arr[1][4]=xmlhttp.responseXML.getElementsByTagName("CANTIDAD").item(0);
+                arr[1][5]=xmlhttp.responseXML.getElementsByTagName("PRECIOT").item(0);
                
-              }else if(j===2){
-                arr[i][j]=xmlhttp.responseXML.getElementsByTagName("DESCRIPCION").item(i);
+                arr[2][0]=xmlhttp.responseXML.getElementsByTagName("NUMERO").item(0);
+                arr[2][1]=xmlhttp.responseXML.getElementsByTagName("TITLE").item(0);
+                arr[2][2]=xmlhttp.responseXML.getElementsByTagName("DESCRIPCION").item(0);
+                arr[2][3]=xmlhttp.responseXML.getElementsByTagName("PRECIOU").item(0);
+                arr[2][4]=xmlhttp.responseXML.getElementsByTagName("CANTIDAD").item(0);
+                arr[2][5]=xmlhttp.responseXML.getElementsByTagName("PRECIOT").item(0);
                
-              }else if(j===3){
-                arr[i][j]=xmlhttp.responseXML.getElementsByTagName("PRECIOU").item(i);
+                arr[3][0]=xmlhttp.responseXML.getElementsByTagName("NUMERO").item(0);
+                arr[3][1]=xmlhttp.responseXML.getElementsByTagName("TITLE").item(0);
+                arr[3][2]=xmlhttp.responseXML.getElementsByTagName("DESCRIPCION").item(0);
+                arr[3][3]=xmlhttp.responseXML.getElementsByTagName("PRECIOU").item(0);
+                arr[3][4]=xmlhttp.responseXML.getElementsByTagName("CANTIDAD").item(0);
+                arr[3][5]=xmlhttp.responseXML.getElementsByTagName("PRECIOT").item(0);
                
-              }else if(j===4){
-                arr[i][j]=xmlhttp.responseXML.getElementsByTagName("CANTIDAD").item(i);
+                arr[4][0]=xmlhttp.responseXML.getElementsByTagName("NUMERO").item(0);
+                arr[4][1]=xmlhttp.responseXML.getElementsByTagName("TITLE").item(0);
+                arr[4][2]=xmlhttp.responseXML.getElementsByTagName("DESCRIPCION").item(0);
+                arr[4][3]=xmlhttp.responseXML.getElementsByTagName("PRECIOU").item(0);
+                arr[4][4]=xmlhttp.responseXML.getElementsByTagName("CANTIDAD").item(0);
+                arr[4][5]=xmlhttp.responseXML.getElementsByTagName("PRECIOT").item(0);
                
-              }else if(j===5){
-                arr[i][j]=xmlhttp.responseXML.getElementsByTagName("PRECIOT").item(i);
-               
-              }
-            }
-          }
-          for(i=0;i<5;i++){
+                for(i=0;i<4;i++){
+                    resultado.innerHTML=arr[i][0].firstChild.nodeValue + " " + arr[i][1].firstChild.nodeValue + " " + arr[i][2].firstChild.nodeValue + " " + arr[i][3].firstChild.nodeValue + " " + arr[i][4].firstChild.nodeValue + " " + arr[i][5].firstChild.nodeValue;
+
+                }
           
-            for(j=0;j<6;j++){
-                resultado.innerHTML=arr[i][j].firstChild.nodeValue;
-            }
+
           }
-          xmlhttp.open("GET","ventas.xml",true);
-          xmlhttp.send();
+
         }
+
       }
+      xmlhttp.open("GET","ventas.xml",true);
+      xmlhttp.send();
     }
-  }
+
+
 </script>
 
 
