@@ -44,7 +44,7 @@ function change_myselect(sel) {
     text += "</table>"
     document.getElementById("demo").innerHTML = text;
   }
-  xmlhttp.open("GET", "ListaPeliculas.json");
+  xmlhttp.open("GET", "ListaPeliculas.json", true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send("x=" + dbParam);
 }
