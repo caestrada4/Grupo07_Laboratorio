@@ -20,9 +20,17 @@
 <p>Escoja su género de películas preferido para desplegar una tabla con la información correspondiente</p>
 <select id="myselect" onchange="change_myselect(this.value)">
   <option value="">Elija una de las siguientes opciones.</option>
-  <option value="Terror">Terror</option>
-  <option value="Drama">Drama</option>
-  <option value="Accion">Accion</option>
+  <option value="Patrick Williams">Patrick Williams</option>
+  <option value="Yodel Fredder">Yodel Fredder</option>
+  <option value="Bill Skarsgård">Bill Skarsgård</option>
+  <option value="Vera Farmiga">Vera Farmiga</option>
+  <option value="Keanu Reaves">Keanu Reaves</option>
+  <option value="Tom Cruise">Tom Cruise</option>
+  <option value="Bruce Willis">Bruce Willis</option>
+  <option value="Josephine Langford">Josephine Langford</option>
+  <option value="Brad Pitt">Brad Pitt</option>
+  <option value="Leonardo Di caprio">Leonardo Di caprio</option>
+  <option value="Al Pacino">Al Pacino</option>
 </select>
 <p id="demo"></p>
 <br>
@@ -32,19 +40,21 @@
 <script>
 
 function change_myselect(sel) {
-  var obj, dbParam, xmlhttp, myObj, x, txt = "";
+  var obj, dbParam, xmlhttp;
   obj = { table: sel, limit: 20 };
   dbParam = JSON.stringify(obj);
   xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      myObj = JSON.parse(this.responseText);
-      txt += "<table border='1'>"
-      for (x in myObj) {
-        txt += "<tr><td>" + x.name + "</td></tr>";
+      var myObj = JSON.parse(this.responseText);
+      var table = "<table border='1'><tr><th>Genero</th><th>Pelicula</th></tr>";
+      var x;
+      for (x in myObj.peliculas) {
+        if (myObj.peliculas[i].Protagonista == sel) {
+        table += "<tr><td>" + myObj.peliculas[x].Genero + "</td><td>"+myObj.peliculas[x].Nombre+"</td></tr>";
       }
-      txt += "</table>"    
-      document.getElementById("demo").innerHTML = txt;
+      table += "</table>"    
+      document.getElementById("demo").innerHTML = table;
       }
     };
   xmlhttp.open("GET", "ListaPeliculas.json");
