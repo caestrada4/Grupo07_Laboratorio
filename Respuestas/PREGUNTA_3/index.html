@@ -39,28 +39,29 @@
 
 <script>
 
-function change_myselect(sel) {
-  var obj, dbParam, xmlhttp;
-  obj = { table: sel, limit: 20 };
-  dbParam = JSON.stringify(obj);
-  xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      var myObj = JSON.parse(this.responseText);
-      var table = "<table border='1'><tr><th>Genero</th><th>Pelicula</th></tr>";
-      var x;
-      for (x in myObj.peliculas) {
-        if (myObj.peliculas[i].Protagonista == sel) {
-        table += "<tr><td>" + myObj.peliculas[x].Genero + "</td><td>"+myObj.peliculas[x].Nombre+"</td></tr>";
-      }
-      table += "</table>"    
-      document.getElementById("demo").innerHTML = table;
-      }
-    };
-  xmlhttp.open("GET", "ListaPeliculas.json");
-  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xmlhttp.send("x=" + dbParam);
-}
+  function change_myselect(sel) {
+    var obj, dbParam, xmlhttp;
+    obj = { table: sel, limit: 20 };
+    dbParam = JSON.stringify(obj);
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var myObj = JSON.parse(this.responseText);
+        var table = "<table border='1'><tr><th>Genero</th><th>Pelicula</th></tr>";
+        var x;
+        for (x in myObj.peliculas) {
+          if (myObj.peliculas[i].Protagonista == sel) {
+          table += "<tr><td>" + myObj.peliculas[x].Genero + "</td><td>"+myObj.peliculas[x].Nombre+"</td></tr>";
+        }
+        table += "</table>"    
+        document.getElementById("demo").innerHTML = table;
+        }
+      };
+    xmlhttp.open("GET", "ListaPeliculas.json");
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("x=" + dbParam);
+    }
+  }
 </script>
 
 </script>
