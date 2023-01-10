@@ -1,76 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<head>
+  <title>Pregunta 3</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <style type="text/css">
+    #background{position:absolute; width:99%; height:130%;}
+    #fixed {position:absolute; top: 0px; left: 0px;}
+  </style>
+</head>
+<body>
+<div>
+    <img id="background" src="../../Imagenes/fondo.jpg"/> 
+    
+  </div>
+<div id="fixed" style="padding-left:30%; padding-top: 10%;">
+<br>
+    <img src="../../Imagenes/selloespe.jpg"  width="65%" align="center">
+    <h1 style="padding-left:25%;">Pregunta 4</h1>
+<p>Mostrar datos XML en una tabla usando AJAX</p>
+<div class="section" id="enunciado" style="padding-left: 25%;margin-top: 5%;">
+  <button style="align-self: center;" type="button" onclick="generarTabla()">Generar Tabla</button>
+</div>
+<div class="section" style="margin-top: 5%;">
 
+</div>
 
-<button onclick="ejecutarAjax()">Mostrar Informacion</button>
-<br></br>
-<div id="info"></div>
-<script type="text/javascript">
-  function ejecutarAjax(){
-    var resultado=document.getElementById("info");
-    var arr=[];
-    var i,j;
-    if(window.XMLHttpRequest){
-      xmlhttp=new XMLHttpRequest();
-    }else{
-      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange=function(){
-      if(xmlhttp.readyState===4 && xmlhttp.status===200){
-        if(xmlhttp.responseXML !== null){
-   
-                arr[0][0]=xmlhttp.responseXML.getElementsByTagName("NUMERO").item(0);
-                arr[0][1]=xmlhttp.responseXML.getElementsByTagName("TITLE").item(0);
-                arr[0][2]=xmlhttp.responseXML.getElementsByTagName("DESCRIPCION").item(0);
-                arr[0][3]=xmlhttp.responseXML.getElementsByTagName("PRECIOU").item(0);
-                arr[0][4]=xmlhttp.responseXML.getElementsByTagName("CANTIDAD").item(0);
-                arr[0][5]=xmlhttp.responseXML.getElementsByTagName("PRECIOT").item(0);
+<table id="ventas"></table>
+<div class="section" style="margin-top: 5%;"></div>
+<br>
+<button onclick="window.location.href='../../index.html'">Menu principal</button>
+</div>
 
-                arr[1][0]=xmlhttp.responseXML.getElementsByTagName("NUMERO").item(0);
-                arr[1][1]=xmlhttp.responseXML.getElementsByTagName("TITLE").item(0);
-                arr[1][2]=xmlhttp.responseXML.getElementsByTagName("DESCRIPCION").item(0);
-                arr[1][3]=xmlhttp.responseXML.getElementsByTagName("PRECIOU").item(0);
-                arr[1][4]=xmlhttp.responseXML.getElementsByTagName("CANTIDAD").item(0);
-                arr[1][5]=xmlhttp.responseXML.getElementsByTagName("PRECIOT").item(0);
-               
-                arr[2][0]=xmlhttp.responseXML.getElementsByTagName("NUMERO").item(0);
-                arr[2][1]=xmlhttp.responseXML.getElementsByTagName("TITLE").item(0);
-                arr[2][2]=xmlhttp.responseXML.getElementsByTagName("DESCRIPCION").item(0);
-                arr[2][3]=xmlhttp.responseXML.getElementsByTagName("PRECIOU").item(0);
-                arr[2][4]=xmlhttp.responseXML.getElementsByTagName("CANTIDAD").item(0);
-                arr[2][5]=xmlhttp.responseXML.getElementsByTagName("PRECIOT").item(0);
-               
-                arr[3][0]=xmlhttp.responseXML.getElementsByTagName("NUMERO").item(0);
-                arr[3][1]=xmlhttp.responseXML.getElementsByTagName("TITLE").item(0);
-                arr[3][2]=xmlhttp.responseXML.getElementsByTagName("DESCRIPCION").item(0);
-                arr[3][3]=xmlhttp.responseXML.getElementsByTagName("PRECIOU").item(0);
-                arr[3][4]=xmlhttp.responseXML.getElementsByTagName("CANTIDAD").item(0);
-                arr[3][5]=xmlhttp.responseXML.getElementsByTagName("PRECIOT").item(0);
-               
-                arr[4][0]=xmlhttp.responseXML.getElementsByTagName("NUMERO").item(0);
-                arr[4][1]=xmlhttp.responseXML.getElementsByTagName("TITLE").item(0);
-                arr[4][2]=xmlhttp.responseXML.getElementsByTagName("DESCRIPCION").item(0);
-                arr[4][3]=xmlhttp.responseXML.getElementsByTagName("PRECIOU").item(0);
-                arr[4][4]=xmlhttp.responseXML.getElementsByTagName("CANTIDAD").item(0);
-                arr[4][5]=xmlhttp.responseXML.getElementsByTagName("PRECIOT").item(0);
-               
-                for(i=0;i<4;i++){
-                    resultado.innerHTML=arr[i][0].firstChild.nodeValue + " " + arr[i][1].firstChild.nodeValue + " " + arr[i][2].firstChild.nodeValue + " " + arr[i][3].firstChild.nodeValue + " " + arr[i][4].firstChild.nodeValue + " " + arr[i][5].firstChild.nodeValue;
+<script>
 
-                }
-          
-
+  function change_myselect(sel) {
+    var obj, dbParam, xmlhttp;
+    obj = { table: sel, limit: 20 };
+    dbParam = JSON.stringify(obj);
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var myObj = JSON.parse(this.responseText);
+        var table = "<table border='1'><tr><th>Genero</th><th>Pelicula</th></tr>";
+        var x;
+        for (x in myObj.peliculas) {
+            if (myObj.peliculas[x].Protagonista == sel) {
+            table += "<tr><td>" + myObj.peliculas[x].Genero + "</td><td>"+myObj.peliculas[x].Nombre+"</td></tr>";
           }
-
         }
-
+        table += "</table>"    
+        document.getElementById("demo").innerHTML = table;
       }
-      xmlhttp.open("GET","ventas.xml",true);
-      xmlhttp.send();
-    }
-
+    };
+    xmlhttp.open("GET", "ListaPeliculas.json",true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("x=" + dbParam);
+  }
 
 </script>
-
-
+</body>
 </html>
