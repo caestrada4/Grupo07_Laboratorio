@@ -43,13 +43,13 @@
 			var estado =xmlDoc.getElementsByTagName("estado")[indice].childNodes[0].nodeValue;
 			switch(estado){
 				case "vivo":
-					document.getElementById("demo").innerHTML = xmlDoc.getElementsByTagName("mamifero")[0].childNodes[0].nodeValue;
+					document.getElementById("mamifero").innerHTML = xmlDoc.getElementsByTagName("mamifero")[0].childNodes[0].nodeValue;
 				break;
 				case "muerto":
-					document.getElementById("demo").innerHTML =xmlDoc.getElementsByTagName("ave")[0].childNodes[0].nodeValue;
+					document.getElementById("ave").innerHTML =xmlDoc.getElementsByTagName("ave")[0].childNodes[0].nodeValue;
 				break;
 				case "extinto":
-					document.getElementById("demo").innerHTML = xmlDoc.getElementsByTagName("reptil")[0].childNodes[0].nodeValue;
+					document.getElementById("reptil").innerHTML = xmlDoc.getElementsByTagName("reptil")[0].childNodes[0].nodeValue;
 				break;
 			} 
 		}		
