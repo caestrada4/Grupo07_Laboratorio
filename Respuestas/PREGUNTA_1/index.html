@@ -21,7 +21,7 @@
 		<p id="p3">Zoologico</p>
 		<p  style="padding-left:15%;">
 			<div id="demo">
-				<button onclick="animal(0);" > Traer Animal vivo</button>
+				<button onclick="traeranimal(0);" > Traer Animal vivo</button>
 				<button onclick="animal(1);">  Traer Animal muerto</button>
 				<button onclick="animal(2);">  Traer Animal extinto</button>
 			</div>
@@ -38,7 +38,7 @@
 		var text = "<zoologico><animal><mamifero>Oso</mamifero><clima>Frio</clima><estado>vivo</estado></animal><animal><ave>Guacamayo</ave><clima>tropical</clima><estado>muerto</estado></animal<animal><reptil>Dinosaurio</reptil><clima>calido_seco</clima><estado>extinto</estado></animal></zoologico>";		
 		parser = new DOMParser(); 
 		xmlDoc = parser.parseFromString(text,"text/xml"); 
-		function animal(indice) {
+		function traeranimal(indice) {
 			var animal = xmlDoc.getElementsByTagName("animal");
 			var estado =xmlDoc.getElementsByTagName("estado")[indice].childNodes[0].nodeValue;
 			switch(estado){
