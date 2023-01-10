@@ -33,23 +33,21 @@
 	<script>
 		var parser, xmlDoc;
 		//la cadena de texto muestra marca, modelo y estado
-		var text = 	
-		"<zoologico><animal><mamifero>oso</mamifero><habitat>clima_frio</habitat><estado>vivo</estado></animal><animal><ave>guacamayo</ave><habitat>clima_tropical</habitat><estado>muerto</estado></animal><animal><reptil>dinosaurio</reptil><habitat>clima_jungla</habitat><estado>extinto</estado></animal></zoologico>";		
+		var text = "<zoologico><animal><mamifero>Oso</mamifero><clima>Frio</clima><estado>vivo</estado></animal><animal><ave>Guacamayo</ave><clima>tropical</clima><estado>muerto</estado></animal<animal><reptil>Dinosaurio</reptil><clima>calido_seco</clima><estado>extinto</estado></animal></zoologico>";		
 		parser = new DOMParser(); 
-
 		xmlDoc = parser.parseFromString(text,"text/xml"); 
 		function animal(indice) {
 			var animal = xmlDoc.getElementsByTagName("animal");
 			var estado =xmlDoc.getElementsByTagName("estado")[indice].childNodes[0].nodeValue;
 			switch(estado){
 				case "vivo":
-					document.getElementById("mamifero").innerHTML = xmlDoc.getElementsByTagName("mamifero")[0].childNodes[0].nodeValue;
+				document.getElementById("demo").innerHTML = xmlDoc.getElementsByTagName("mamifero")[0].childNodes[0].nodeValue;
 				break;
 				case "muerto":
-					document.getElementById("ave").innerHTML =xmlDoc.getElementsByTagName("ave")[0].childNodes[0].nodeValue;
+				document.getElementById("demo").innerHTML =xmlDoc.getElementsByTagName("ave")[0].childNodes[0].nodeValue;
 				break;
 				case "extinto":
-					document.getElementById("reptil").innerHTML = xmlDoc.getElementsByTagName("reptil")[0].childNodes[0].nodeValue;
+				document.getElementById("demo").innerHTML = xmlDoc.getElementsByTagName("reptil")[0].childNodes[0].nodeValue;
 				break;
 			} 
 		}		
