@@ -48,8 +48,8 @@
           if (this.readyState == 4 && this.status == 200) {
             var xmlDoc=this.responseXML;
             var sendResponse="";
-            var nombres=document.getElementsByTagName("nombre");
-            var comidas=document.getElementsByTagName("comida");
+            var nombres=xmlDoc.getElementsByTagName("nombre");
+            var comidas=xmlDoc.getElementsByTagName("comida");
             for(var i=0;i<nombres.length;i++){
               sendResponse+=nombres[i].childNodes[0].nodeValue+" ingiere "+comidas[i].childNodes[0].nodeValue+"<br>";
             }
