@@ -29,18 +29,7 @@
           xhttp.send();<br>
         </li>
       </ul>
-      <script>
-        function CargarDatos() {
-          var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              document.getElementById("demo").innerHTML = this.responseText;
-            }
-          };
-          xhttp.open("GET", "ejemplo.xml", true);
-          xhttp.send();
-        }        
-      </script>
+
       <div class="section" id="enunciado" style="padding-left:25%;margin-top: 5%;" >
       <button style="align-self: center;" type="button" onclick="CargarDatos()">Obtener Datos</button>
       </div>
@@ -52,20 +41,25 @@
       <button onclick="window.location.href='../../index.html'">Menu principal</button>
     </div>
 
-<script>
-  xhttp = new XMLHttpRequest(); //Creacion del objeto XMLHttpRequest
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML =
-      this.responseText;
-    }
-  };
-  
-  xhttp.open("GET", "ejemplo.xml", true);//Enviar la solicitud para obtener el archivo .txt
-  xhttp.send();  // Solo funciona con el protocolo http (on-line)
-  
-  
-</script>
+    <script>
+      function CargarDatos() {
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var xmlDoc=this.responseXML;
+            var sendResponse="";
+            const nombres=document.getElementById("nombre");
+            const comidas=document.getElementById("comida");
+            for(var i=0;i<nombres.length;i++){
+              sendResponse+=nombres[i].childNodes[0].nodeValue+"ingiere"+comidas[i].childNodes[0].nodeValue+"<br>";
+            }
+            document.getElementById("resolucion").innerHTML=sendResponse
+          }
+        };
+        xhttp.open("GET", "ejemplo.xml", true);
+        xhttp.send();
+      }        
+    </script>
 
 </body>
 </html>
