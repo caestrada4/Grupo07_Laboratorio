@@ -33,28 +33,25 @@
 
 <script>
 
-  function change_myselect(sel) {
-    var obj, dbParam, xmlhttp;
-    obj = { table: sel, limit: 20 };
-    dbParam = JSON.stringify(obj);
+  function generarTabla() {
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        var myObj = JSON.parse(this.responseText);
-        var table = "<table border='1'><tr><th>Genero</th><th>Pelicula</th></tr>";
-        var x;
-        for (x in myObj.peliculas) {
-            if (myObj.peliculas[x].Protagonista == sel) {
-            table += "<tr><td>" + myObj.peliculas[x].Genero + "</td><td>"+myObj.peliculas[x].Nombre+"</td></tr>";
-          }
-        }
-        table += "</table>"    
-        document.getElementById("demo").innerHTML = table;
+        functionTabla(this);
       }
     };
-    xmlhttp.open("GET", "ListaPeliculas.json",true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("x=" + dbParam);
+    xmlhttp.open("GET", "ventas.xml",true);
+    xmlhttp.send();
+  }
+
+  function functionTabla(xml) {
+    var xmlDoc=xml.responseXML;
+    var table="<tr><th>NUMERO</th><th>TITULO</th><th>Descripcion</th><th>Precio Unitario</th><th>CANTIDAD</th><th>Precio Total</th></tr>";
+    var productos=xmlDoc.getElementsByTagName("PRODUCTO");
+    for(var i=0;i<productos.length;i++) {
+      table+="<tr><td>"+productos[i].getElementsByTagName("NUMERO")[0].childNodes[0].nodeValue+"</td><td>"+productos[i].getElementsByTagName("DESCRIPCION")[0].childNodes[0].nodeValue+"</td><td>"+productos[i].getElementsByTagName("PRECIOU")[0].childNodes[0].nodeValue+"</td><td>"+productos[i].getElementsByTagName("CANTIDAD")[0].childNodes[0].nodeValue+"</td><td>"+productos[i].getElementsByTagName("PRECIOT")[0].childNodes[0].nodeValue+"</td></tr>";
+    }
+    document.getElementById("ventas").innerHTML=table;
   }
 
 </script>
