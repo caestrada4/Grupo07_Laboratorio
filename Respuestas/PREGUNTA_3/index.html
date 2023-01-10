@@ -50,18 +50,19 @@
         var table = "<table border='1'><tr><th>Genero</th><th>Pelicula</th></tr>";
         var x;
         for (x in myObj.peliculas) {
-          if (myObj.peliculas[i].Protagonista == sel) {
-          table += "<tr><td>" + myObj.peliculas[x].Genero + "</td><td>"+myObj.peliculas[x].Nombre+"</td></tr>";
+            if (myObj.peliculas[i].Protagonista == sel) {
+            table += "<tr><td>" + myObj.peliculas[x].Genero + "</td><td>"+myObj.peliculas[x].Nombre+"</td></tr>";
+          }
         }
         table += "</table>"    
         document.getElementById("demo").innerHTML = table;
-        }
-      };
-    xmlhttp.open("GET", "ListaPeliculas.json");
+      }
+    };
+    xmlhttp.open("GET", "ListaPeliculas.json",true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("x=" + dbParam);
-    }
   }
+
 </script>
 </body>
 </html>
