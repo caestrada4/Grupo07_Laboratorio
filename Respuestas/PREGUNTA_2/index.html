@@ -45,14 +45,13 @@
       function CargarDatos() {
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
-          const nombres = null || [];
           if (this.readyState == 4 && this.status == 200) {
             var xmlDoc=this.responseXML;
             var sendResponse="";
-            nombres=document.getElementById("nombre");
-            const comidas=document.getElementById("comida");
+            var nombres=document.getElementsByTagName("nombre");
+            var comidas=document.getElementsByTagName("comida");
             for(var i=0;i<nombres.length;i++){
-              sendResponse+=nombres[i].childNodes[0].nodeValue+"ingiere"+comidas[i].childNodes[0].nodeValue+"<br>";
+              sendResponse+=nombres[i].childNodes[0].nodeValue+" ingiere "+comidas[i].childNodes[0].nodeValue+"<br>";
             }
             document.getElementById("resolucion").innerHTML=sendResponse
           }
