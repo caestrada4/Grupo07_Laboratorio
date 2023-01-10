@@ -49,7 +49,7 @@
     var table="<tr><th>NUMERO</th><th>TITULO</th><th>Descripcion</th><th>Precio Unitario</th><th>CANTIDAD</th><th>Precio Total</th></tr>";
     var productos=xmlDoc.getElementsByTagName("PRODUCTO");
     for(var i=0;i<productos.length;i++) {
-      table+="<tr><td>"+productos[i].getElementsByTagName("NUMERO")[0].childNodes[0].nodeValue+"</td><td>"+productos[i].getElementsByTagName("DESCRIPCION")[0].childNodes[0].nodeValue+"</td><td>"+productos[i].getElementsByTagName("PRECIOU")[0].childNodes[0].nodeValue+"</td><td>"+productos[i].getElementsByTagName("CANTIDAD")[0].childNodes[0].nodeValue+"</td><td>"+productos[i].getElementsByTagName("PRECIOT")[0].childNodes[0].nodeValue+"</td></tr>";
+      table+="<tr><td>"+productos[i].getElementsByTagName("NUMERO")[0].childNodes[0].nodeValue+"</td><td>"+productos[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue+"</td><td>"+productos[i].getElementsByTagName("DESCRIPCION")[0].childNodes[0].nodeValue+"</td><td>"+productos[i].getElementsByTagName("PRECIOU")[0].childNodes[0].nodeValue+"</td><td>"+productos[i].getElementsByTagName("CANTIDAD")[0].childNodes[0].nodeValue+"</td><td>"+productos[i].getElementsByTagName("PRECIOT")[0].childNodes[0].nodeValue+"</td></tr>";
     }
     document.getElementById("ventas").innerHTML=table;
   }
