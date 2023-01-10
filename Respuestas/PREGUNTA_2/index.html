@@ -50,7 +50,7 @@
             var sendResponse="";
             const nombres=document.getElementById("nombre");
             const comidas=document.getElementById("comida");
-            for(var i=0;i<nombres.length;i++){
+            for(var i=0;i<nombres.length();i++){
               sendResponse+=nombres[i].childNodes[0].nodeValue+"ingiere"+comidas[i].childNodes[0].nodeValue+"<br>";
             }
             document.getElementById("resolucion").innerHTML=sendResponse
