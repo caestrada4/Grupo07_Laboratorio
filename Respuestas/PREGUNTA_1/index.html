@@ -20,9 +20,9 @@
 		<p id="descripcion"> Para este ejercicio se utilizara una cadena de texto sobre marcas de celulares dentro de una tienda.</p>
 		<p id="p3">Tienda de Celulares</p>
 		<p style="padding-left:15%;">
-			<button onclick="traerAnimal(1);" > Traer Animal muerto</button>
-			<button onclick="traerAnimal(0);">  Traer Animal vivo</button>
-			<button onclick="traerAnimal(2);">  Traer Animal extinto</button>
+			<button onclick="animal(1);" > Traer Animal muerto</button>
+			<button onclick="animal(0);">  Traer Animal vivo</button>
+			<button onclick="animal(2);">  Traer Animal extinto</button>
 		</p>
 		<p style="padding-left:35%;"id="p1"></p>
 		<br>
@@ -38,7 +38,7 @@
 		parser = new DOMParser(); 
 
 		xmlDoc = parser.parseFromString(text,"text/xml"); 
-		function traerAnimal(indice) {
+		function animal(indice) {
 			var animal = xmlDoc.getElementsByTagName("animal");
 			var estado =xmlDoc.getElementsByTagName("estado")[indice].childNodes[0].nodeValue;
 			switch(estado){
